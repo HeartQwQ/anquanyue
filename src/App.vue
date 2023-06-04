@@ -36,83 +36,35 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="top">
-      <h1>安全生产月</h1>
-    </div>
-    <div class="content">
-      <button @click="clickRequest" ref="btn">刷新二维码</button>
-      <div class="img">
-        <img v-if="loading" style="width: 100%; height: 100%;" src="./img/loading.jfif" alt="">
-        <p v-if="!loading && !isQRCode">点击按钮获取最新二维码</p>
+  <div class="container flex flex-col justify-around text-center p-5 text-xl max-sm:text-base">
+    <h1 class="font-black text-7xl max-sm:text-4xl text-sky-400">安全生产月</h1>
+    <div class="space-y-2">
+      <button
+        class="mb-8 max-sm:mb-4 w-40 h-14 bg-sky-400 text-white text-lg rounded-md max-sm:w-28 max-sm:h-12 max-sm:text-sm font-black hover:bg-sky-300"
+        @click="clickRequest">刷新二维码</button>
+      <div class="flex flex-col justify-center w-80 h-80 max-sm:w-60 max-sm:h-60 m-auto border rounded border-black">
+        <img v-if="loading" src="./img/loading.jfif" alt="">
+        <p class="font-black text-2xl max-sm:text-lg" v-if="!loading && !isQRCode">点击按钮获取最新二维码</p>
         <img v-if="isQRCode" :src="QRCode" alt="">
       </div>
-      <p style="margin: 10px 0;font-size: 20px;">扫码登录</p>
-      <h2>扫码时请勿关闭本页面</h2>
+      <p>扫码登录</p>
+      <p class="font-black">扫码时请勿关闭本页面</p>
     </div>
-    <div class="footer">
-      <p style="color: #38bdf8;font-size: 24px;">免去答题搜题的烦恼</p>
-      <p style="margin: 12px 0;">每天定时帮您完成答题，让您宝贵的时间效率最大化</p>
+    <div class="space-y-2">
+      <p class="text-sky-400 font-black">免去答题搜题的烦恼</p>
+      <p>每天定时帮您完成答题，让您宝贵的时间效率最大化</p>
       <p>客服：770550590</p>
     </div>
   </div>
 </template>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-}
-
-button {
-  width: 150px;
-  height: 60px;
-  background: #38bdf8;
-  border: 0;
-  color: #fff;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #7dd3fc;
-}
-
-h1 {
-  font-size: 58px;
-  color: #0ea5e9;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-.img {
-  margin: 30px auto 0;
-  width: 300px;
-  height: 300px;
-  border: #000 solid 1px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.container {
+  height: 100dvh;
 }
 
 img {
   width: 100%;
   height: 100%;
-}
-
-.container {
-  height: calc(100vh - 60px);
-  width: 70vw;
-  margin: 0 auto;
-  padding: 30px 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 </style>
