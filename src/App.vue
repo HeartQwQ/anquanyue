@@ -12,20 +12,20 @@ export default {
   },
   methods: {
     async getData() {
-      return (await service.get("https://mock.apifox.cn/m1/2812188-0-default/getQRCode?agents=test")).data
+      return await service.get("https://mock.apifox.cn/m1/2812188-0-default/getQRCode?agents=test")
     },
     async clickRequest() {
       this.isQRCode = false
       this.loading = true
       setTimeout(async () => {
         clearTimeout(this.timeoutID);
-        const data = await this.getData()
+        const { data } = await this.getData()
         this.QRCode = "data:image/jpeg;base64," + data.QRCode
         console.log('刷新二维码', data);
         this.isQRCode = true
         this.loading = false
         this.timeoutID = setTimeout(async () => {
-          const data = await this.getData()
+          const { data } = await this.getData()
           this.QRCode = "data:image/jpeg;base64," + data.QRCode
           console.log('定时刷新', data);
         }, 3000)
