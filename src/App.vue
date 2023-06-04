@@ -81,6 +81,7 @@ h2 {
 }
 
 .img {
+  margin: 0 auto;
   width: 300px;
   height: 300px;
   border: #000 solid 1px;
