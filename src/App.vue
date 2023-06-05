@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       QRCode: null,
-      isQRCode: false,
+      isOne: false,
       loading: false,
       timeoutID: null
     }
@@ -15,14 +15,14 @@ export default {
       return await service.get("https://mock.apifox.cn/m1/2812188-0-default/getQRCode?agents=test")
     },
     async clickRequest() {
-      this.isQRCode = false
+      this.isOne = true
+      this.QRCode = null
       this.loading = true
       setTimeout(async () => {
         clearTimeout(this.timeoutID);
         const { data } = await this.getData()
         this.QRCode = "data:image/jpeg;base64," + data.QRCode
         console.log('刷新二维码', data);
-        this.isQRCode = true
         this.loading = false
         this.timeoutID = setTimeout(async () => {
           const { data } = await this.getData()
@@ -36,23 +36,24 @@ export default {
 </script>
 
 <template>
-  <div class="container flex flex-col justify-around text-center p-5 text-xl max-sm:text-base">
-    <h1 class="font-black text-7xl max-sm:text-4xl text-sky-400">安全生产月</h1>
+  <div
+    class="container flex flex-col justify-around text-center p-10 text-xl max-sm:text-base antialiased tracking-widest align-middle ">
+    <h1 class="font-black text-7xl max-sm:text-4xl text-rose-400">安全生产月</h1>
     <div class="space-y-2">
-      <button
-        class="mb-8 max-sm:mb-4 w-40 h-14 bg-sky-400 text-white text-lg rounded-md max-sm:w-28 max-sm:h-12 max-sm:text-sm font-black hover:bg-sky-300"
+      <button class="mb-8 max-sm:mb-4 bg-rose-400 text-white rounded-md hover:bg-rose-300 py-3 px-4"
         @click="clickRequest">刷新二维码</button>
-      <div class="flex flex-col justify-center w-80 h-80 max-sm:w-60 max-sm:h-60 m-auto border rounded border-black">
-        <img v-if="loading" src="./img/loading.jfif" alt="">
-        <p class="font-black text-2xl max-sm:text-lg" v-if="!loading && !isQRCode">点击按钮获取最新二维码</p>
-        <img v-if="isQRCode" :src="QRCode" alt="">
+      <div v-if="isOne" class="space-y-2">
+        <div class="flex flex-col justify-center w-80 h-80 max-sm:w-52 max-sm:h-52 m-auto border rounded border-black">
+          <img v-if="loading" src="./img/loading.jfif" alt="">
+          <img v-if="QRCode" :src="QRCode" alt="">
+        </div>
+        <p>扫码登录</p>
+        <p class="font-black text-xl">扫码时请勿关闭本页面</p>
       </div>
-      <p>扫码登录</p>
-      <p class="font-black">扫码时请勿关闭本页面</p>
     </div>
     <div class="space-y-2">
-      <p class="text-sky-400 font-black">免去答题搜题的烦恼</p>
-      <p>每天定时帮您完成答题，让您宝贵的时间效率最大化</p>
+      <p class="text-rose-400 font-black text-lg">免去答题搜题的烦恼</p>
+      <p>每天定时帮您完成答题</p>
       <p>客服：770550590</p>
     </div>
   </div>
@@ -60,7 +61,8 @@ export default {
 
 <style>
 .container {
-  height: 100dvh;
+  height: 100vh;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
 
 img {
