@@ -37,13 +37,14 @@ export default {
 
 <template>
   <div
-    class="container flex flex-col justify-around text-center p-10 text-xl max-sm:text-base antialiased tracking-widest align-middle ">
+    class="container h-screen flex flex-col justify-around text-center p-10 text-xl max-sm:text-base antialiased tracking-widest align-middle font-sans">
     <h1 class="font-black text-7xl max-sm:text-4xl text-rose-400">安全生产月</h1>
     <div class="space-y-2">
-      <button class="mb-8 max-sm:mb-4 bg-rose-400 text-white rounded-md hover:bg-rose-300 py-3 px-4"
+      <button
+        class="mb-8 max-sm:mb-4 bg-rose-400 text-white font-black rounded-md hover:bg-rose-300 py-3 px-5 shadow-lg shadow-rose-500/50"
         @click="clickRequest">刷新二维码</button>
       <div v-if="isOne" class="space-y-2">
-        <div class="flex flex-col justify-center w-80 h-80 max-sm:w-52 max-sm:h-52 m-auto border rounded border-black">
+        <div class="flex flex-col justify-center w-80 h-80 max-sm:w-52 max-sm:h-52 m-auto border-2 rounded border-black">
           <img v-if="loading" src="./img/loading.jfif" alt="">
           <img v-if="QRCode" :src="QRCode" alt="">
         </div>
@@ -61,8 +62,12 @@ export default {
 
 <style>
 .container {
-  height: 100vh;
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  text-shadow: 0px 0px 2px #000;
+}
+
+.text-rose-400 {
+  text-shadow: 0px 0px 2px #f6798b;
 }
 
 img {
