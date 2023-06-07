@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     async getQRCode(agents) {
-      return await service.get("/getQRCode" + agents)
+      return await service.get("/getQRCode?agents=" + agents)
     },
     async getLogin(token) {
       return await service.get("/login?token=" + token)
@@ -27,8 +27,7 @@ export default {
       this.QRCode = null
       this.isOne = true
       this.loading = true
-      // this.timeout = 0
-      const { data } = await this.getQRCode("")
+      const { data } = await this.getQRCode("123456")
       console.log('刷新二维码', data);
       this.QRCode = "data:image/jpeg;base64," + data.QRCode
       this.token = data.token
