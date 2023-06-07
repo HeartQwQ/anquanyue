@@ -1,4 +1,9 @@
 [[redirects]]
-  from = "/*"
-  to = "http://43.138.62.100:8000"
+  from = "/getQRCode"
+  to = "http://43.138.62.100:8000/getQRCode"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "http://43.138.62.100:8000/login"
   status = 200

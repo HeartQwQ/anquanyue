@@ -13,7 +13,9 @@ export default {
   },
   created() {
     setInterval(async () => {
-      this.login()
+      if (this.token) {
+        this.login(this.token)
+      }
     }, 5000)
   },
   methods: {
