@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "http://43.138.62.100:8000"
+  status = 200

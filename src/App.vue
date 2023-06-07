@@ -4,7 +4,7 @@ import service from "./utils/request"
 export default {
   data() {
     return {
-      token: null,
+      token: "",
       QRCode: null,
       isOne: false,
       loading: false,
