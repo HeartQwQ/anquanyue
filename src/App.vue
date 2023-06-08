@@ -1,5 +1,6 @@
 <template>
   <router-view></router-view>
+  <router-link to="/admin-test">跳转</router-link>
   <div
     class="container h-screen flex flex-col justify-around text-center p-10 text-xl max-sm:text-base antialiased tracking-widest align-middle font-sans">
     <h1 class="font-black text-7xl max-sm:text-4xl text-sky-400">安全生产月</h1>
