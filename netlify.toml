@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/api/getQRCode"
-  to = "https://122.152.233.35:8000/getQRCode"
+  from = "/getQRCode/*"
+  to = "http://122.152.233.35:8000/getQRCode/:splat"
   status = 200
   force = true
