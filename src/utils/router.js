@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import app from '../App.vue'
+import index from '../index.vue'
 
 //路由数组
 const routes = [
@@ -9,7 +10,7 @@ const routes = [
   },
   {
     path: "/admin-test",
-    component: app,
+    component: index,
   }
 ]
 
