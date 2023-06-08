@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 // 创建一个 axios 实例
 const service = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,

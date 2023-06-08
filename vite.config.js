@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://43.138.62.100:8000', //目标url
+        target: 'http://122.152.233.35:8000', //目标url
         changeOrigin: true, //支持跨域
         rewrite: (path) => path.replace(/^\/api/, ""),
       }

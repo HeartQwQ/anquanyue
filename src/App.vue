@@ -7,6 +7,7 @@ export default {
       token: "",
       QRCode: null,
       loading: true,
+      loginData: null
     }
   },
   async created() {
@@ -15,22 +16,35 @@ export default {
     this.QRCode = "data:image/jpeg;base64," + data.QRCode
     this.token = data.token
     this.loading = false
-    setInterval(() => {
+    const id = setInterval(async () => {
       if (this.token) {
-        this.login(this.token)
+        this.loginData = await this.login(this.token)
+        console.log('loginData', this.loginData);
+        if (this.loginData.code === 0) {
+          console.log('跳出循环');
+          clearInterval(id)
+        } else if (this.loginData.code !== 0 && this.loginData.msg == "请扫码") {
+          console.log('继续循环');
+        }
+        else {
+          console.log('退出循环，并返回失败');
+          clearInterval(id)
+        }
+      } else {
+        alert("获取验证码失败，请刷新页面重试")
       }
     }, 5000)
   },
   methods: {
-    async getQRCode(agents) {
-      return await service.get("/getQRCode?agents=" + agents)
+    async getQRCode() {
+      const query = window.location.href.split("/")[3]
+      return await service.get("/getQRCode?agents=" + query)
     },
     async getLogin(token) {
       return await service.get("/login?token=" + token)
     },
-    async login() {
-      const login = await this.getLogin(this.token)
-      console.log('login', login);
+    login() {
+      return this.getLogin(this.token)
     }
   }
 }
