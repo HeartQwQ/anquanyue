@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import app from '../App.vue'
 import index from '../index.vue'
+// import home from '../home.vue'
 
 //路由数组
 const routes = [
   {
     path: "/",
-    component: app,
-  },
-  {
-    path: "/admin-test",
     component: index,
-  }
+  },
+  // {
+  //   path: "/admin-test",
+  //   component: home,
+  // }
 ]
 
 //路由对象
